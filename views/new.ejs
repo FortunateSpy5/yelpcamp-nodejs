@@ -1,0 +1,11 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Create a New Campground</h1>
+
+<form action="/campgrounds" method="POST">
+    <input type="text" placeholder="Name" name="name">
+    <input type="text" placeholder="Image URL" name="image">
+    <button type="submit">Submit</button>
+</form>
+
+<%- include("partials/footer.ejs") %>
