@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <header class="jumbotron">
+    <header class="jumbotron mt-3 mb-5">
         <div class="container">
             <h1 class="display-3"><strong>Welcome To Yelp Camp</strong></h1>
             <p class="lead mt-3">View our hand-picked campgrounds from all over the world!</p>
@@ -14,19 +14,20 @@
 
     <div class="row">
         <% campgrounds.forEach((campground) => { %>
-            <div class="col-lg-3 col-md-6 col-sm-6 d-flex mb-3">
-                <div class="card" style="width: 100%;">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <img class="card-img-top embed-responsive-item" src="<%= campground.image %>" style="object-fit: cover;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-0 text-center"><%= campground.name %></h5>
-                    </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 d-flex mb-3">
+            <div class="card" style="width: 100%;">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <img class="card-img-top embed-responsive-item" src="<%= campground.image %>"
+                        style="object-fit: cover;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title mb-0 text-center"><%= campground.name %></h5>
                 </div>
             </div>
+        </div>
         <% }) %>
-    </ul>
+        </ul>
 
-</div>
+    </div>
 
-<%- include("partials/footer.ejs") %>
+    <%- include("partials/footer.ejs") %>
