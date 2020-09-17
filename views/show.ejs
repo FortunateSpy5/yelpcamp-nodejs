@@ -1,0 +1,11 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container" style="max-width: 720px;">
+    <h1 class="display-4 text-center my-3"><%= campground.name %></h1>
+
+    <img src="<%= campground.image %>" class="w-100 my-3 d-block mx-auto">
+
+    <p class="my-3 lead text-justify"><%= campground.description %> </p>
+</div>
+
+<%- include("partials/footer.ejs") %>

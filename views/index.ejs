@@ -15,13 +15,16 @@
     <div class="row">
         <% campgrounds.forEach((campground) => { %>
         <div class="col-lg-3 col-md-6 col-sm-6 d-flex mb-3">
-            <div class="card" style="width: 100%;">
+            <div class="card w-100">
                 <div class="embed-responsive embed-responsive-16by9">
                     <img class="card-img-top embed-responsive-item" src="<%= campground.image %>"
                         style="object-fit: cover;">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title mb-0 text-center"><%= campground.name %></h5>
+                    <div class="d-flex">
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-dark mt-3 mx-auto">More Info</a>
+                    </div>
                 </div>
             </div>
         </div>
