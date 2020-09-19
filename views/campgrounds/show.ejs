@@ -27,6 +27,9 @@
                     <p class="card-text text-justify">
                         <%= campground.description %>
                     </p>
+                    <span>
+                        <em>Author: <%= campground.author.username %></em>
+                    </span>
                 </div>
             </div>
 
@@ -39,7 +42,7 @@
                     <% campground.comments.forEach((comment) => { %>
                     <li class="list-group-item">
                         <strong>
-                            <%= comment.author %> - 
+                            <%= comment.author.username %> - 
                         </strong>
                         <span class="">
                             <%= comment.text %>

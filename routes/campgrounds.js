@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 // NEW CAMPGROUND FORM
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     res.render('campgrounds/new', {
         title: 'New Campground'
     });
@@ -41,7 +41,7 @@ router.get('/:id', (req, res) => {
 
 
 // CREATE NEW CAMPGROUND (POST)
-router.post('/', function (req, res) {
+router.post('/', isLoggedIn, function (req, res) {
     const name = req.body.name;
     const image = req.body.image;
     const description = req.body.description;
@@ -50,18 +50,28 @@ router.post('/', function (req, res) {
     Campground.create({
         name: name,
         image: image,
-        description: description
+        description: description,
+        author: {
+            id: req.user.id,
+            username: req.user.username
+        }
     }, function (err, campground) {
         if (err) {
             console.log(err.message);
             res.redirect('/campgrounds/new');
             console.log("Failed to add new campground. Please try again!");
         } else {
-            console.log('Campground added to Database!');
-            console.log(campground);
             res.redirect('/campgrounds');
         }
     });
 });
+
+// CHECK IF LOGGED IN (MIDDLEWARE)
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
 
 module.exports = router;
