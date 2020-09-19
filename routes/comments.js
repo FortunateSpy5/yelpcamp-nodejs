@@ -4,9 +4,10 @@ const router = express.Router({
 });
 const Campground = require('../models/campground');
 const Comment = require('../models/comment');
+const middleware = require('../middleware');
 
 // ADD NEW COMMENT FORM
-router.get('/new', isLoggedIn, (req, res) => {
+router.get('/new', middleware.isLoggedIn, (req, res) => {
     Campground.findById(req.params.id, function (err, campground) {
         if (err) {
             console.log(err.message);
@@ -21,7 +22,7 @@ router.get('/new', isLoggedIn, (req, res) => {
 });
 
 // NEW COMMENT POST
-router.post('/', isLoggedIn, (req, res) => {
+router.post('/', middleware.isLoggedIn, (req, res) => {
     Campground.findById(req.params.id, function (err, campground) {
         if (err) {
             console.log(err.message);
@@ -42,13 +43,5 @@ router.post('/', isLoggedIn, (req, res) => {
         }
     })
 });
-
-// CHECK IF LOGGED IN (MIDDLEWARE)
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/login');
-}
 
 module.exports = router;

@@ -11,21 +11,17 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                YelpCamp
-            </a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <% if (currentUser) { %>
-                    <a class="btn btn-dark text-nowrap ml-3" href="/logout">Logout</a>
-                <% } else { %> 
-                    <a class="btn btn-success text-nowrap" href="/register">Sign Up</a>
-                    <a class="btn btn-primary text-nowrap ml-3" href="/login">Login</a>
-                <% } %> 
-            </ul>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            YelpCamp
+        </a>
+    
+        <div class="ml-auto">
+            <% if (currentUser) { %>
+            <a class="btn btn-dark text-nowrap" href="/logout">Logout</a>
+            <% } else { %>
+            <a class="btn btn-success text-nowrap" href="/register">Sign Up</a>
+            <a class="btn btn-primary text-nowrap ml-2" href="/login">Login</a>
+            <% } %>
         </div>
     </nav>
