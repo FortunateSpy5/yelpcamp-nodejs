@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     Campground.find(function (err, campgrounds) {
         if (err) {
             console.log(err.message);
+            res.redirect('back');
         } else {
             res.render('campgrounds/index', {
                 title: 'Campgrounds',

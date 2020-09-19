@@ -15,7 +15,7 @@
         <a class="navbar-brand" href="/">
             YelpCamp
         </a>
-    
+
         <div class="ml-auto">
             <% if (currentUser) { %>
             <a class="btn btn-dark text-nowrap" href="/logout">Logout</a>
@@ -25,3 +25,11 @@
             <% } %>
         </div>
     </nav>
+    <div class="container text-center mt-3">
+        <% if (success && success.length > 0) { %>
+            <div class="alert alert-success"><%= success %></div>
+        <% } %>
+        <% if (error && error.length > 0) { %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+    </div>

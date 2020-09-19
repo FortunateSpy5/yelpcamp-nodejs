@@ -3,6 +3,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     port = 3000,
     mongoose = require('mongoose'),
+    flash = require('connect-flash'),
     passport = require('passport'),
     localStrategy = require('passport-local'),
     methodOverride = require('method-override'),
@@ -36,6 +37,9 @@ app.set('view engine', 'ejs');
 // METHOD OVERRIDE
 app.use(methodOverride('_method'));
 
+// FLASH
+app.use(flash());
+
 // PASSPORT CONFIGURATION
 app.use(require('express-session')({
     secret: "When I find myself in times of trouble",
@@ -51,6 +55,8 @@ passport.deserializeUser(User.deserializeUser());
 // MIDDLEWARE TO ADD USER DETAILS TO VARIABLE
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
     next();
 });
 
