@@ -20,8 +20,12 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <a class="btn btn-success text-nowrap">Sign Up</a>
-                <a class="btn btn-dark text-nowrap ml-3">Login</a>
+                <% if (currentUser) { %>
+                    <a class="btn btn-dark text-nowrap ml-3" href="/logout">Logout</a>
+                <% } else { %> 
+                    <a class="btn btn-success text-nowrap" href="/register">Sign Up</a>
+                    <a class="btn btn-primary text-nowrap ml-3" href="/login">Login</a>
+                <% } %> 
             </ul>
         </div>
     </nav>
