@@ -15,7 +15,7 @@ const express = require('express'),
     indexRoutes = require('./routes/index')
 
 // MONGOOSE CONNECT
-mongoose.connect('mongodb://localhost:27017/yelp_camp', {
+mongoose.connect(process.env.DATABASEURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false
